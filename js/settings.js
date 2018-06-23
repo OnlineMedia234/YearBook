@@ -22,7 +22,7 @@ if(env == "local"){
 }else{
     base_url = "https://projects.onlinemedia.com.ng/yearbook";
     url = 'https://projects.onlinemedia.com.ng/yearbook/api.php';
-    server_upload_url = "https://cdn.uwansell.com/apps/";
+    server_upload_url = "https://cdn.uwansell.com.ng/apps/";
 }
 
 app_path = "year_book/";
