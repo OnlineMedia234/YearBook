@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>Mobile Year Book</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="lib/f7/css/framework7.min.css">
+    <link rel="stylesheet" href="lib/f7/css/framework7.material.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="lib/upload/fine-uploader-new.min.css">
+</head>
+<body class="theme-cyan">
+<!-- App root element -->
+<!-- App root -->
+
+  <div id="app">
+    <div class="statusbar"></div>
+    <div class="panel panel-left panel-cover">
+      <div class="page">
+        <div class="page-content">
+          <div class="block-title">User Menu</div>          
+          <div class="list links-list">
+            <ul>
+              <li>
+                <a href="/home/" class="panel-close">Dashboard</a>
+              </li>
+              <li>
+                <a href="/submit-post/" class="panel-close">New Content</a>
+              </li>
+              <li>
+                <a href="/year-book/" class="panel-close">View Yearbook</a>
+              </li>
+              <li>
+                <a href="/students/" class="panel-close">All Students</a>
+              </li>
+              <li>
+                <a href="/profile/" class="panel-close">Edit Profile</a>
+              </li>
+              <li>
+                <a href="/logout/" class="panel-close">Logout</a>
+              </li>              
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="view view-main view-init" data-url="/">
+
+      <div class="page">        
+        <div class="page-content slider-page" style="background-color: #eee;">
+
+          <div class="block"><h1 class="center" style="padding: 10px;">2018 Students Mobile Yearbook</h1></div>
+            <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container swiper-init demo-swiper">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/slides/1.jpg" class="img-responsive" >
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/slides/2.jpg" class="img-responsive" >
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/slides/3.jpg" class="img-responsive" >
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/slides/4.jpg" class="img-responsive" >
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/slides/5.jpg" class="img-responsive" >
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/slides/6.jpg" class="img-responsive" >
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/slides/7.jpg" class="img-responsive" >
+                </div>
+                <div class="swiper-slide">
+                  <img src="img/slides/8.jpg" class="img-responsive" >
+                </div>              
+              </div>
+          </div>
+
+          <!-- next info -->
+
+          <div class="block center">
+            <h4>Designed by</h4>
+            <p>
+              Olawale Mujeeb Olaide
+            </p>
+
+            <h4>Supervised by</h4>
+            <p>
+              Mr. Hammed M.A
+            </p>
+          </div>
+
+
+          <div class="block">
+            <div class="row">
+              <a class="button button-outline button-round col" href="/login/"> <i class="icon material-icons md-only">person</i> Login</a>
+              <a class="button button-outline button-round col" href="/register/"> <i class="icon material-icons md-only">person</i> Sign Up</a>
+            </div> 
+            <br>
+            <div class="row">
+              <a href="/about/" class="col button button-fill button-round">About</a>
+            </div>          
+          </div>
+
+          
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/f7/js/framework7.min.js"></script>
+<!-- Path to your app js-->
+
+<script type="text/javascript" src="lib/upload/fine-uploader.min.js"></script>
+<script type="text/javascript" src="js/settings.js"></script>
+<script type="text/javascript" src="js/routes.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left sliding">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title sliding">Yearbook</div>
+
+            </div>
+        </div>
+        <div class="page-content">
+
+            <div class="timeline all-time-lists">                
+                
+            </div>
+
+            <div class="page-fixed-center">
+                <p class="center">
+                    Network Error
+                </p>
+                <div class="row">
+                    <div class="col-25">&nbsp;</div>
+                    <div class="col-50">
+                        <a href="" class="button button-outline btn-retry-list button-round">Retry</a>
+                    </div>
+                    <div class="col-25">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+<script>
+    return {
+        on: {
+            pageInit: function() {
+                var app = this.$app;
+                var $$ = this.$;
+                var router = this.$router;
+                var user_id = sessionStorage.getItem("user_id");
+                if ((user_id === "") || (user_id === null)) {
+
+                    mainView.router.navigate('/login/');
+                    return;
+                }
+
+                load_timeline();
+
+                $("body").on("click", ".btn-retry-list", function(e) {
+                    e.preventDefault();
+                    load_timeline();
+                });
+
+                function load_timeline() {
+                    $(".page-fixed-center").hide();
+                    app.preloader.show();
+
+                    $.ajax({
+                        url: url + "?load_timeline",
+                        type: 'get',
+                        dataType: 'json',
+                        timeout: 45000,
+                        success: function(f) {
+                            app.preloader.hide();
+                            console.log(f);
+
+                            var tim = f.timeline;
+                            var htmls = "";
+                            //<li class="item-content">
+                            /*<div class="item-inner">
+                                    <div class="item-title">Acura</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </li>*/
+
+                            for (var i = 0; i < tim.length; i++) {
+                                var img = server_upload_url + "" + app_path + "timeline/thumb/" + tim[i].image;
+                                var user_name = tim[i].name;
+                                var post = tim[i].post;
+                                var day = tim[i].day;
+                                var month = tim[i].month;
+                                var time = tim[i].time;
+                                
+                                htmls += '<div class="timeline-item">';
+                                htmls += '<div class="timeline-item-date">'+day+' <small>'+month+'</small></div>';
+                                htmls += '<div class="timeline-item-divider"></div>';
+                                htmls += '<div class="timeline-item-content">';
+                                htmls += '<div class="timeline-item-inner">';
+                                htmls += '<div class="timeline-item-time">'+time+'</div>';
+                                htmls += '<div class="timeline-item-title">'+user_name+'</div>';
+                                htmls += '<div class="timeline-item-media"><img src="'+img+'" class="img-responsive"></div>';
+                                htmls += '<div class="timeline-item-text">'+post+'</div>';
+                                htmls += '</div></div></div>';
+                                
+                            }
+
+                            htmls += "";
+
+                            //console.log(htmls);
+
+                            $(".all-time-lists").html(htmls);
+
+                        },
+                        error: function(e) {
+                            app.preloader.hide();
+                            app.toast.create({
+                                text: 'Network error, please ensure that you have active internet connections!',
+                                position: 'bottom',
+                                closeTimeout: 3000
+                            }).open();
+
+                            $(".page-fixed-center").show();
+                        }
+                    });
+                }
+
+            }
+        },
+
+    }
+</script>

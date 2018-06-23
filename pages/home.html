@@ -1,0 +1,99 @@
+<template>
+    <div class="page">
+        <div class="fab fab-right-bottom">
+            <a href="/submit-post/" class="">
+                <i class="icon material-icons md-only color-white">create</i>
+            </a>
+        </div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                      <a href="#" class="link icon-only panel-open" data-panel="left">
+                        <i class="icon f7-icons ios-only">menu</i>
+                        <i class="icon material-icons md-only">menu</i>
+                      </a>
+                </div>
+                <div class="title sliding">{{user_name}}</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block-title">Hi {{user_name}}</div>
+            <div class="padding">
+                <div class="user-img">
+                    <img src="{{image}}" class="img-responsive">
+                </div>
+                
+
+                <div class="card card-outline">
+                    <div class="card-header">
+                        Student Information
+                    </div>
+                    <div class="card-content card-content-padding">
+                        <div class="row">
+                            <div class="col-30"><strong>Name</strong></div>
+                            <div class="col-70">{{user_name}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-30"><strong>Email Address</strong></div>
+                            <div class="col-70">{{email}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-30"><strong>Phone Number</strong></div>
+                            <div class="col-70">{{phone}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-30"><strong>Gender</strong></div>
+                            <div class="col-70">{{gender}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-30"><strong>Level</strong></div>
+                            <div class="col-70">{{level}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-30"><strong>About Me</strong></div>
+                            <div class="col-70">{{bio}}</div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/profile/">Edit Profile</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</template>
+<script>
+    return {        
+        on: {
+            pageInit: function() {
+                var app = this.$app;
+                var $$ = this.$;                
+                var router = this.$router;        
+                var user_id = sessionStorage.getItem("user_id");
+                if((user_id === "") || (user_id === null)){
+                    
+                    mainView.router.navigate('/login/');
+                }
+            }
+        },
+        data: function () {        
+            return {
+                user_name: sessionStorage.getItem("name"),
+                email: sessionStorage.getItem("email"),
+                phone: sessionStorage.getItem("phone"),
+                gender: sessionStorage.getItem("gender"),
+                bio: sessionStorage.getItem("bio"),
+                address: sessionStorage.getItem("bio"),
+                level: sessionStorage.getItem("level"),
+                image: server_upload_url+""+app_path+"users/thumb/"+sessionStorage.getItem("image")
+            }
+        },
+    }
+</script>
