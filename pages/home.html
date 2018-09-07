@@ -20,7 +20,7 @@
             <div class="block-title">Hi {{user_name}}</div>
             <div class="padding">
                 <div class="user-img">
-                    <img src="{{image}}" class="img-responsive">
+                    <img src="{{image}}" class="img-responsive user-img">
                 </div>
                 
 
@@ -79,8 +79,27 @@
                 var user_id = sessionStorage.getItem("user_id");
                 if((user_id === "") || (user_id === null)){
                     
-                    mainView.router.navigate('/login/');
+                    window.location = "index.html";
                 }
+
+
+                $(".logout").on("click",function(){
+                    app.dialog.confirm('Are you sure you want to logout?', function () {
+                        sessionStorage.removeItem("user_id");
+                        sessionStorage.removeItem("chats_lists");
+                        sessionStorage.removeItem("username");
+                        sessionStorage.removeItem("name");
+                        sessionStorage.removeItem("email");
+                        sessionStorage.removeItem("phone");
+                        sessionStorage.removeItem("gender");
+                        sessionStorage.removeItem("bio");
+                        sessionStorage.removeItem("image");
+                        sessionStorage.removeItem("requests");
+                        sessionStorage.removeItem("room_lists");
+                        
+                        mainView.router.navigate("/",{});
+                    });
+                });
             }
         },
         data: function () {        
