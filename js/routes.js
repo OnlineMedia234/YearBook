@@ -12,7 +12,16 @@ var routes=[ // Index page
 }
 ,
 {
+    path: '/password/', componentUrl: './pages/password.html', name: 'password',
+}
+,
+{
     path: '/register/', componentUrl: './pages/register.html', name: 'login',
+}
+,
+,
+{
+    path: '/profile/', componentUrl: './pages/profile.html', name: 'profile',
 }
 ,
 {
@@ -36,7 +45,7 @@ var routes=[ // Index page
 
 , // Default route (404 page). MUST BE THE LAST
 {
-    path: '(.*)', url: './pages/404.html',
+    path: '(.*)', url: './pages/home.html',
 }
 
 ];
